@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="section_name">Section Name:</string>
+    <string name="title">Title:</string>
+    <string name="setting">Setting</string>
+
+    <!-- Strings For section Preference [CHAR LIMIT=30] -->
+    <string name="settings_section_label">Section name</string>
+    <string name="settings_section_key" translatable="false">sectionName</string>
+    <string name="settings_section_default" translatable="false">@string/settings_section1_value</string>
+
+    <!-- Label for Politics option [CHAR LIMIT=20] -->
+    <string name="settings_section1_label">Politics</string>
+    <string name="settings_section1_value" translatable="false">politics</string>
+
+    <!-- Label for opinion option [CHAR LIMIT=20] -->
+    <string name="settings_section2_label">Opinion</string>
+    <string name="settings_section2_value" translatable="false">Opinion</string>
+</resources>
