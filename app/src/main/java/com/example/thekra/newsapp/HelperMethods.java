@@ -108,13 +108,11 @@ public class HelperMethods {
             JSONArray newsArray = newsObject.getJSONArray("results");
             for (int i = 0; i < newsArray.length(); i++) {
                 JSONObject currentNews = newsArray.getJSONObject(i);
-                String title = currentNews.getString("webTitle");
-                String section = currentNews.getString("sectionName");
-                String url = currentNews.getString("webUrl");
+                String title = currentNews.optString("webTitle");
+                String section = currentNews.optString("sectionName");
+                String url = currentNews.optString("webUrl");
                 News newArticle = new News(title, section, url);
                 news.add(newArticle);
-
-
             }
         } catch (JSONException m) {
             Log.e("extractDataFromJson", "error parsing the json result", m);

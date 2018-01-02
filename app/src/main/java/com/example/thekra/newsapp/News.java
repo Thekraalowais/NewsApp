@@ -1,8 +1,6 @@
 package com.example.thekra.newsapp;
 
-/**
- * Created by Thekra on 8/16/2017.
- */
+
 
 public class News {
     private String nTitle;

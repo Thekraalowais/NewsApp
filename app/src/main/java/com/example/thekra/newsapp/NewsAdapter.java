@@ -34,9 +34,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri newsUrl = Uri.parse(currentNew.getUrl());
-                Intent intent = new Intent(Intent.ACTION_VIEW, newsUrl);
-                context.startActivity(intent);
+                openWeb(currentNew.getUrl());
+
             }
         });
     }
@@ -70,5 +69,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         news.clear();
         news.addAll(data);
         notifyDataSetChanged();
+    }
+
+    public void openWeb(String url) {
+        Uri webpage = Uri.parse(url);
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            webpage = Uri.parse("http://" + url);
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        context.startActivity(intent);
+
     }
 }

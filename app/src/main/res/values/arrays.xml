@@ -4,9 +4,12 @@
 <string-array name="setting_section_labels">
     <item>@string/settings_section1_label</item>
     <item>@string/settings_section2_label</item>
+    <item>@string/settings_section3_label</item>
 </string-array>
     <string-array name="setting_section_values">
         <item>@string/settings_section1_value</item>
         <item>@string/settings_section2_value</item>
+        <item>@string/settings_section3_value</item>
+
     </string-array>
 </resources>

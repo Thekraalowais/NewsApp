@@ -2,7 +2,6 @@ package com.example.thekra.newsapp;
 
 import android.support.v4.content.AsyncTaskLoader;
 import android.content.Context;
-
 import java.util.List;
 
 

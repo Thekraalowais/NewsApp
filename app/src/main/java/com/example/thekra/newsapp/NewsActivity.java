@@ -16,7 +16,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,33 +33,31 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
         adapter = new NewsAdapter(this, news);
         recyclerView.setAdapter(adapter);
+        //the LayoutManager define the type of layout
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (isConnected()) {
             getSupportLoaderManager().restartLoader(NEWS_LOADER_ID, null, this);
-        } else {
+        }else{
             adapter.clear();
         }
     }
 
-    //http://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle args) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String section = sharedPreferences.getString(getString(R.string.settings_section_key), getString(R.string.settings_section_default));
-        Log.v("NEWSACTIVITY", "LLLLLLLLLLLLLLLL" + section);
-
-        Uri baseUri = Uri.parse(NEWS_URL);
-        Uri.Builder uriBuilder = baseUri.buildUpon();
-        uriBuilder.appendQueryParameter("q", "debates");
-        uriBuilder.appendQueryParameter("sectionName", section);
-        uriBuilder.appendQueryParameter("api-key", "test");
-        Log.v("NEWSACTIVITY", "WWWWWWWWWWWWWWWw" + uriBuilder.toString());
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        String section=sharedPreferences.getString(getString(R.string.settings_section_key),getString(R.string.settings_section_default));
+        Uri baseUri=Uri.parse(NEWS_URL);
+        Uri.Builder uriBuilder=baseUri.buildUpon();
+        uriBuilder.appendQueryParameter("section",section);
+        uriBuilder.appendQueryParameter("api-key","test");
+        Log.v("SSSSSSSSSSSSss","ss" + uriBuilder.toString());
         return new NewsLoader(this, uriBuilder.toString());
+
     }
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
-        if (news != null) {
+        if (news != null){
             adapter.clear();
             adapter.AddAll(news);
         }
@@ -85,9 +82,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.menu) {
-            Intent settingIntent = new Intent(this, SettingActivity.class);
+        int id=item.getItemId();
+        if(id==R.id.menu){
+            Intent settingIntent=new Intent(this,SettingActivity.class);
             startActivity(settingIntent);
         }
         return super.onOptionsItemSelected(item);
